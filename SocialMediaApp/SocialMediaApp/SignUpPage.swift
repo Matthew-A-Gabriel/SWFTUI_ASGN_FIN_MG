@@ -9,7 +9,17 @@ import SwiftUI
 
 struct SignUpPage: View {
     var body: some View {
-        Text("Sign Up!")
+        NavigationView(content: {
+            ZStack{
+                VStack {
+                    Text("Sign Up Page Here")
+                }
+                .padding()
+            }
+            .frame(width: 400, height: 760)
+            .ignoresSafeArea()
+            .background(.cyan)
+        })
     }
 }
 

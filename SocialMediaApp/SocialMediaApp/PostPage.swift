@@ -9,7 +9,17 @@ import SwiftUI
 
 struct PostPage: View {
     var body: some View {
-        Text("Post Here!")
+        NavigationView(content: {
+            ZStack{
+                VStack {
+                    Text("Post Page Here")
+                }
+                .padding()
+            }
+            .frame(width: 400, height: 760)
+            .ignoresSafeArea()
+            .background(.cyan)
+        })
     }
 }
 

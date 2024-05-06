@@ -9,7 +9,17 @@ import SwiftUI
 
 struct AccountPage: View {
     var body: some View {
-        Text("Account Here")
+        NavigationView(content: {
+            ZStack{
+                VStack {
+                    Text("Account Page Here")
+                }
+                .padding()
+            }
+            .frame(width: 400, height: 760)
+            .ignoresSafeArea()
+            .background(.cyan)
+        })
     }
 }
 

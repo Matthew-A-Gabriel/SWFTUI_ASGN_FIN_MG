@@ -9,7 +9,17 @@ import SwiftUI
 
 struct LoginPage: View {
     var body: some View {
-        Text("Login!")
+        NavigationView(content: {
+            ZStack{
+                VStack {
+                    Text("Log In Page Here")
+                }
+                .padding()
+            }
+            .frame(width: 400, height: 760)
+            .ignoresSafeArea()
+            .background(.cyan)
+        })
     }
 }
 
