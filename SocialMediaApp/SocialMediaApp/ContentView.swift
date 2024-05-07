@@ -7,19 +7,30 @@
 
 import SwiftUI
 
+struct PostConstruct{
+    var StrAccName: String
+    var StrAccImage: String
+    var StrHeading: String
+    var StrContent: String
+}
+
+
 struct ContentView: View {
+    @State private var postList: [PostConstruct] = []
     var body: some View {
         NavigationView(content: {
             ZStack{
                 ScrollView{
                     VStack {
                         Text("Home Page Here")
+                        Text("Name of app prop: Atmosphere")
                     }
                     .padding()
                     .position(CGPoint(x: 200.0, y: 200.0))
                 }
+//                 This Below is the navigation bar thing
                 HStack{
-                    NavigationLink("ACC", destination: {
+                    NavigationLink("Account", destination: {
                         AccountPage()
                     })
                     .foregroundColor(.cyan)
