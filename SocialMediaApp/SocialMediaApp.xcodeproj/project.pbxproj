@@ -18,6 +18,7 @@
 		335B2E4E2BE5469D00287764 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335B2E4D2BE5469D00287764 /* LoginPage.swift */; };
 		335B2E502BE546D100287764 /* SignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335B2E4F2BE546D100287764 /* SignUpPage.swift */; };
 		335B2E522BE546E700287764 /* PostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335B2E512BE546E700287764 /* PostPage.swift */; };
+		33B5F5252BED345A0002BAA6 /* Default Avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B5F5242BED345A0002BAA6 /* Default Avatar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		335B2E4D2BE5469D00287764 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		335B2E4F2BE546D100287764 /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
 		335B2E512BE546E700287764 /* PostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPage.swift; sourceTree = "<group>"; };
+		33B5F5242BED345A0002BAA6 /* Default Avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default Avatar.png"; path = "../../../Default Avatar.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				335B2E4D2BE5469D00287764 /* LoginPage.swift */,
 				335B2E4F2BE546D100287764 /* SignUpPage.swift */,
 				335B2E512BE546E700287764 /* PostPage.swift */,
+				33B5F5242BED345A0002BAA6 /* Default Avatar.png */,
 				333A460A2BE538FC00B5F9CF /* Assets.xcassets */,
 				333A460C2BE538FC00B5F9CF /* Preview Content */,
 			);
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				333A460E2BE538FC00B5F9CF /* Preview Assets.xcassets in Resources */,
+				33B5F5252BED345A0002BAA6 /* Default Avatar.png in Resources */,
 				333A460B2BE538FC00B5F9CF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

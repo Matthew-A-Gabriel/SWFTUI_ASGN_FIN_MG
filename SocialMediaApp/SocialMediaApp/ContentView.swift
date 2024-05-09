@@ -16,14 +16,35 @@ struct PostConstruct{
 
 
 struct ContentView: View {
-    @State private var postList: [PostConstruct] = []
+    @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrAccImage: "Default Avatar", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123")]
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
         NavigationView(content: {
             ZStack{
                 ScrollView{
                     VStack {
-                        Text("Home Page Here")
-                        Text("Name of app prop: Atmosphere")
+                        Text("Welcome to the Atmosphere")
+                            .padding()
+                            .font(.title)
+                            .foregroundColor(.cyan)
+                            .background(.white)
+                            .frame(width: 375, height: 50)
+                            .cornerRadius(100)
+                            .position(CGPoint(x: 180.0, y: 80.0))
+                            .multilineTextAlignment(.center)
+                        LazyVGrid(columns: columns, content: {
+                            List{
+                                ForEach(postList.indices, id: \.self){
+                                    index in
+                                    Text("\(postList[index].StrHeading)")
+                                    Text("WHERE IS THIS THING???")
+                                }
+                            }
+                            .frame(width: 300, height: 150)
+                            .foregroundColor(.blue)
+                            .background(.black)
+                            .position(CGPoint(x: 180.0, y: 150.0))
+                        })
                     }
                     .padding()
                     .position(CGPoint(x: 200.0, y: 200.0))
