@@ -110,8 +110,8 @@
 				335B2E4D2BE5469D00287764 /* LoginPage.swift */,
 				335B2E4F2BE546D100287764 /* SignUpPage.swift */,
 				335B2E512BE546E700287764 /* PostPage.swift */,
-				33B5F5242BED345A0002BAA6 /* Default Avatar.png */,
 				333A460A2BE538FC00B5F9CF /* Assets.xcassets */,
+				33B5F5242BED345A0002BAA6 /* Default Avatar.png */,
 				333A460C2BE538FC00B5F9CF /* Preview Content */,
 			);
 			path = SocialMediaApp;

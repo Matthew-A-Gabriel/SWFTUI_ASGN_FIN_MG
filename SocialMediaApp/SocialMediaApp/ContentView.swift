@@ -32,12 +32,20 @@ struct ContentView: View {
                             .cornerRadius(100)
                             .position(CGPoint(x: 180.0, y: 80.0))
                             .multilineTextAlignment(.center)
+                        Image("PFP")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .background(.white)
+                            .cornerRadius(100)
+                            .position(CGPoint(x: 180.0, y: 10.0))
+                            .padding(.vertical)
                         LazyVGrid(columns: columns, content: {
                             List{
                                 ForEach(postList.indices, id: \.self){
                                     index in
                                     Text("\(postList[index].StrHeading)")
                                     Text("WHERE IS THIS THING???")
+                                    
                                 }
                             }
                             .frame(width: 300, height: 150)
@@ -78,11 +86,9 @@ struct ContentView: View {
                 }
                 .position(CGPoint(x: 200.0, y: 100.0))
             }
-            .frame(width: 400, height: 760)
             .ignoresSafeArea()
             .background(.cyan)
         })
-        
     }
 }
 
