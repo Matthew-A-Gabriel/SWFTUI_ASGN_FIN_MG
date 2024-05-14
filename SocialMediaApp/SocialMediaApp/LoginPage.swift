@@ -14,7 +14,7 @@ struct LoginPage: View {
         NavigationView(content: {
             ZStack{
                 VStack {
-                    Text("Login in Page Here")
+                    Text("Log Into your Account!")
                     
                     TextField("Username", text: $placehldr)
                         .multilineTextAlignment(.center)
@@ -38,10 +38,19 @@ struct LoginPage: View {
                 .ignoresSafeArea(.all)
                 .cornerRadius(20)
                 .padding()
+                
+                Image("Door")
+                    .resizable()
+                    .padding()
+                    .border(Color.black, width:4)
+                    .frame(width: 125, height: 175)
+                    .cornerRadius(5)
+                    .position(CGPoint(x: 200.0, y: 200.0))
             }
             .frame(width: 400, height: 760)
             .ignoresSafeArea()
             .background(.cyan)
+            
         })
     }
 }

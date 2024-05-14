@@ -10,26 +10,50 @@ import SwiftUI
 struct SignUpPage: View {
     @State var placehldr = ""
     @State var placehldrPass = ""
+    @State var placehldrConfmPass = ""
+    @State var placehldr2 = ""
+    @State var placehldrDate: Date = Date.now
+    @State var placehldr3 = ""
+
+
     var body: some View {
         NavigationView(content: {
             ZStack{
                 VStack {
-                    Text("Sign Up Page Here")
+                    Text("Create an Account!")
+                    
 
                     TextField("Username", text: $placehldr)
                         .multilineTextAlignment(.center)
+                        .frame(width: 200, height: 25)
+                        .border(Color.black)
+                        .border(Color.black, width: 2)
+                        .cornerRadius(5)
 
                     SecureField("Password", text: $placehldrPass)
                         .multilineTextAlignment(.center)
+                        .frame(width: 200, height: 25)
+                        .border(Color.black)
+                        .border(Color.black, width: 2)
+                        .cornerRadius(5)
 
-                    SecureField("Confirm Password", text: $placehldrPass)
+                    SecureField("Confirm Password", text: $placehldrConfmPass)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 200, height: 25)
+                        .border(Color.black)
+                        .border(Color.black, width: 2)
+                        .cornerRadius(5)
+
+                    DatePicker("Date of Birth", selection: $placehldrDate, displayedComponents: .date)
+                        .padding()
                         .multilineTextAlignment(.center)
 
-                    TextField("Date of Birth", text: $placehldr)
+                    TextField("Email", text: $placehldr3)
                         .multilineTextAlignment(.center)
-
-                    TextField("Email", text: $placehldr)
-                        .multilineTextAlignment(.center)
+                        .frame(width: 200, height: 25)
+                        .border(Color.black)
+                        .border(Color.black, width: 2)
+                        .cornerRadius(5)
                     
                     Button {
                         
@@ -48,6 +72,14 @@ struct SignUpPage: View {
                 .ignoresSafeArea(.all)
                 .cornerRadius(20)
                 .padding()
+                
+                Image("Pencil")
+                    .resizable()
+                    .padding()
+                    .border(Color.black, width:4)
+                    .frame(width: 125, height: 110)
+                    .cornerRadius(5)
+                    .position(CGPoint(x: 200.0, y: 150.0))
             }
             .frame(width: 400, height: 760)
             .ignoresSafeArea()
