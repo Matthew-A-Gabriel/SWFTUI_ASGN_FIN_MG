@@ -20,6 +20,12 @@ struct SignUpPage: View {
         NavigationView(content: {
             ZStack{
                 VStack {
+                    Image("Pencil")
+                        .resizable()
+                        .padding()
+                        .border(Color.black, width:4)
+                        .frame(width: 125, height: 110)
+                        .cornerRadius(5)
                     Text("Create an Account!")
                     
 
@@ -65,6 +71,10 @@ struct SignUpPage: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
+                    NavigationLink("Already have an Account?" , destination: {
+                      LoginPage()
+                    })
+
 
                 }
                 .frame(width: 350 , height: 600)
@@ -72,14 +82,6 @@ struct SignUpPage: View {
                 .ignoresSafeArea(.all)
                 .cornerRadius(20)
                 .padding()
-                
-                Image("Pencil")
-                    .resizable()
-                    .padding()
-                    .border(Color.black, width:4)
-                    .frame(width: 125, height: 110)
-                    .cornerRadius(5)
-                    .position(CGPoint(x: 200.0, y: 150.0))
             }
             .frame(width: 400, height: 760)
             .ignoresSafeArea()

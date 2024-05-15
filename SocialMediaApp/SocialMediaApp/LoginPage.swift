@@ -11,9 +11,15 @@ struct LoginPage: View {
     @State var placehldr = ""
     @State var placehldrPass = ""
     var body: some View {
-        NavigationView(content: {
+        NavigationView{
             ZStack{
                 VStack {
+                    Image("Door")
+                        .resizable()
+                        .padding()
+                        .border(Color.black, width:4)
+                        .frame(width: 125, height: 175)
+                        .cornerRadius(5)
                     Text("Log Into your Account!")
                     
                     TextField("Username", text: $placehldr)
@@ -31,7 +37,10 @@ struct LoginPage: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-
+                    NavigationLink("Don't Have an Account?" , destination: {
+                      SignUpPage()
+                    })
+                    .navigationBarBackButtonHidden(true)
                 }
                 .frame(width: 350 , height: 600)
                 .background(.white)
@@ -39,19 +48,13 @@ struct LoginPage: View {
                 .cornerRadius(20)
                 .padding()
                 
-                Image("Door")
-                    .resizable()
-                    .padding()
-                    .border(Color.black, width:4)
-                    .frame(width: 125, height: 175)
-                    .cornerRadius(5)
-                    .position(CGPoint(x: 200.0, y: 200.0))
+
             }
             .frame(width: 400, height: 760)
             .ignoresSafeArea()
             .background(.cyan)
             
-        })
+        }
     }
 }
 

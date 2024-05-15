@@ -19,7 +19,7 @@ struct ContentView: View {
     @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrAccImage: "Default Avatar", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123")]
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
-        NavigationView(content: {
+        NavigationView{
             ZStack{
                 ScrollView{
                     VStack {
@@ -32,13 +32,7 @@ struct ContentView: View {
                             .cornerRadius(100)
                             .position(CGPoint(x: 180.0, y: 80.0))
                             .multilineTextAlignment(.center)
-                        Image("PFP")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .background(.white)
-                            .cornerRadius(100)
-                            .position(CGPoint(x: 180.0, y: 10.0))
-                            .padding(.vertical)
+
                         LazyVGrid(columns: columns, content: {
                             List{
                                 ForEach(postList.indices, id: \.self){
@@ -57,41 +51,56 @@ struct ContentView: View {
                     .padding()
                     .position(CGPoint(x: 200.0, y: 200.0))
                 }
-//                 This Below is the navigation bar thing
-                HStack{
-                    NavigationLink("Account", destination: {
-                        AccountPage()
-                    })
-                    .foregroundColor(.cyan)
-                    .frame(width: 80, height: 50)
-                    .background(.white)
-                    .cornerRadius(100)
-                    .padding()
-                    NavigationLink("POST", destination: {
-                        PostPage()
-                    })
-                    .foregroundColor(.cyan)
-                    .frame(width: 80, height: 50)
-                    .background(.white)
-                    .cornerRadius(100)
-                    .padding()
-                    NavigationLink("LOGIN", destination: {
-                        LoginPage()
-                    })
-                    .foregroundColor(.cyan)
-                    .frame(width: 80, height: 50)
-                    .background(.white)
-                    .cornerRadius(100)
-                    .padding()
-                }
-                .position(CGPoint(x: 200.0, y: 100.0))
             }
             .ignoresSafeArea()
             .background(.cyan)
-        })
+        }
     }
 }
 
 #Preview {
     ContentView()
 }
+
+
+
+
+//Ignore this
+//                 This Below is the navigation bar thing
+                
+           
+//                HStack{
+//                    NavigationLink("Account", destination: {
+//                        AccountPage()
+//                    })
+//                    .foregroundColor(.cyan)
+//                    .frame(width: 80, height: 50)
+//                    .background(.white)
+//                    .cornerRadius(100)
+//                    .padding()
+//                    NavigationLink("POST", destination: {
+//                        PostPage()
+//                    })
+//                    .foregroundColor(.cyan)
+//                    .frame(width: 80, height: 50)
+//                    .background(.white)
+//                    .cornerRadius(100)
+//                    .padding()
+//                    NavigationLink("LOGIN", destination: {
+//                        LoginPage()
+//                    })
+//                    .foregroundColor(.cyan)
+//                    .frame(width: 80, height: 50)
+//                    .background(.white)
+//                    .cornerRadius(100)
+//                    .padding()
+                
+//                    Image("PFP")
+//                       .resizable()
+//                       .frame(width: 50, height: 50)
+//                       .background(.white)
+//                       .cornerRadius(100)
+//                       .position(CGPoint(x: 180.0, y: 10.0))
+//                       .padding(.vertical)
+//                }
+//                .position(CGPoint(x: 200.0, y: 100.0))
