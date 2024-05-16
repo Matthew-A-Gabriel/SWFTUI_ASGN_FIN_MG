@@ -12,48 +12,75 @@ struct PostConstruct{
     var StrAccImage: String
     var StrHeading: String
     var StrContent: String
+    var StrLikes: Int
+    var StrLiked: Bool
+    var StrComments: Int
 }
 
 
 struct ContentView: View {
-    @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrAccImage: "Default Avatar", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123")]
+    @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrAccImage: "Default Avatar", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123", StrLikes: 15, StrLiked: false, StrComments: 2)]
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
-        NavigationView{
-            ZStack{
-                ScrollView{
-                    VStack {
-                        Text("Welcome to the Atmosphere")
-                            .padding()
-                            .font(.title)
-                            .foregroundColor(.cyan)
-                            .background(.white)
-                            .frame(width: 375, height: 50)
-                            .cornerRadius(100)
-                            .position(CGPoint(x: 180.0, y: 80.0))
-                            .multilineTextAlignment(.center)
+        TabView{
+            
+            NavigationView{
+                ZStack{
+                    ScrollView{
+                        VStack {
+                            Text("Welcome to the Atmosphere")
+                                .padding()
+                                .font(.title)
+                                .foregroundColor(.cyan)
+                                .background(.white)
+                                .frame(width: 375, height: 50)
+                                .cornerRadius(100)
+                                .position(CGPoint(x: 175.0, y: 25.0))
+                                .multilineTextAlignment(.center)
+                            
+                            ForEach(postList.indices, id: \.self) {index in
+                                VStack{
+                                    HStack{
+                                        Text(postList[index].StrAccName)
+                                        Image("\(postList[index].StrAccImage)")
+                                        Text(postList[index].StrHeading)
+                                    }
+                                    Text(postList[index].StrContent)
+                                    HStack{
+                                        Text("Likes \(postList[index].StrLikes)")
+                                        Text("Comments \(postList[index].StrComments)")
 
-                        LazyVGrid(columns: columns, content: {
-                            List{
-                                ForEach(postList.indices, id: \.self){
-                                    index in
-                                    Text("\(postList[index].StrHeading)")
-                                    Text("WHERE IS THIS THING???")
-                                    
+                                    }
                                 }
+                                .frame(width: 275, height: 100)
+                                .background(.white)
+                                .cornerRadius(10)
+                                
                             }
-                            .frame(width: 300, height: 150)
-                            .foregroundColor(.blue)
-                            .background(.black)
-                            .position(CGPoint(x: 180.0, y: 150.0))
-                        })
+                            
+                        }
+                        .padding()
+                        .position(CGPoint(x: 200.0, y: 200.0))
                     }
-                    .padding()
-                    .position(CGPoint(x: 200.0, y: 200.0))
                 }
+                .ignoresSafeArea()
+                .background(.cyan)
             }
-            .ignoresSafeArea()
-            .background(.cyan)
+            .tabItem {
+                Text("Main Page")
+            }
+            AccountPage()
+                .tabItem {
+                    Text("Account")
+                }
+            PostPage()
+                .tabItem {
+                    Text("Make a Post")
+                }
+            LoginPage()
+                .tabItem {
+                    Text("Log In")
+                }
         }
     }
 }
