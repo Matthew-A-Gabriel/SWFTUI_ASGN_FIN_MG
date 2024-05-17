@@ -7,9 +7,19 @@
 
 import SwiftUI
 
+struct AccountList{
+    var accountUsername: String
+    var accountPassword: String
+    var accountEmail: String
+    var accountDOB: Date
+}
+
 struct LoginPage: View {
-    @State var placehldr = ""
-    @State var placehldrPass = ""
+    
+    @Binding var accountInfo: AccountConstruct
+    @State private var accInfo: [AccountList] = [AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)]
+    @State private var intermediateName: String = ""
+    @State private var intermediatePass: String = ""
     var body: some View {
         NavigationView{
             ZStack{
@@ -22,13 +32,18 @@ struct LoginPage: View {
                         .cornerRadius(5)
                     Text("Log Into your Account!")
                     
-                    TextField("Username", text: $placehldr)
+                    TextField("Username", text: $intermediateName)
                         .multilineTextAlignment(.center)
                     
-                    SecureField("Password", text: $placehldrPass)
+                    SecureField("Password", text: $intermediatePass)
                         .multilineTextAlignment(.center)
                     Button {
-                        
+                        for x in accInfo.indices{
+                            if accInfo[x].accountUsername == intermediateName && accInfo[x].accountPassword == intermediatePass{
+                                
+                            }
+                        }
+
                     } label: {
                         Text("Log In")
                             .padding()
@@ -59,5 +74,5 @@ struct LoginPage: View {
 }
 
 #Preview {
-    LoginPage()
+    LoginPage(accountInfo: .constant(AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now, signedIn: false)))
 }

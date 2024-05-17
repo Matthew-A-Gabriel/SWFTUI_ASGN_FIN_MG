@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PostPage: View {
+    var headHolder = ""
+    var contentHolder = ""
+    
     var body: some View {
         NavigationView(content: {
             ZStack{

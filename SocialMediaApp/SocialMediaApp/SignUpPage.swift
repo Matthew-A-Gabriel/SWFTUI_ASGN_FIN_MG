@@ -64,17 +64,13 @@ struct SignUpPage: View {
                     Button {
                         
                     } label: {
-                        Text("Log In")
+                        Text("Sign Up")
                             .padding()
                             .frame(width: 125, height:50)
                             .background(.cyan)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    NavigationLink("Already have an Account?" , destination: {
-                      LoginPage()
-                    })
-
 
                 }
                 .frame(width: 350 , height: 600)

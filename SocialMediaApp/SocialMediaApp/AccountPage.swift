@@ -7,12 +7,7 @@
 
 import SwiftUI
 
-struct AccountConstruct{
-    var accountUsername: String
-    var accountPassword: String
-    var accountEmail: String
-    var accountDOB: Date
-}
+
 
 struct AccountPage: View {
     var body: some View {
