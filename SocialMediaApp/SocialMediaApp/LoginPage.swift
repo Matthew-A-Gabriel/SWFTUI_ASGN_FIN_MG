@@ -17,9 +17,10 @@ struct AccountList{
 struct LoginPage: View {
     
     @Binding var accountInfo: AccountConstruct
-    @State private var accInfo: [AccountList] = [AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)]
+    @State private var accInfo: [AccountList] = [AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.init()), ]
     @State private var intermediateName: String = ""
     @State private var intermediatePass: String = ""
+    @State private var testVari: String = ""
     var body: some View {
         NavigationView{
             ZStack{
@@ -40,10 +41,12 @@ struct LoginPage: View {
                     Button {
                         for x in accInfo.indices{
                             if accInfo[x].accountUsername == intermediateName && accInfo[x].accountPassword == intermediatePass{
-                                
+                                accountInfo.accountUsername = accInfo[x].accountUsername
+                                accountInfo.accountPassword = accInfo[x].accountPassword
+                                accountInfo.accountDOB = accInfo[x].accountDOB
+                                accountInfo.accountEmail = accInfo[x].accountEmail
                             }
                         }
-
                     } label: {
                         Text("Log In")
                             .padding()
@@ -52,18 +55,20 @@ struct LoginPage: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
+                    
+                    Text("\(testVari)")
+                    
                     NavigationLink("Don't Have an Account?" , destination: {
-                      SignUpPage()
+                        SignUpPage(accInfo: $accInfo)
                     })
                     .navigationBarBackButtonHidden(true)
+                    .foregroundColor(.blue)
                 }
                 .frame(width: 350 , height: 600)
                 .background(.white)
                 .ignoresSafeArea(.all)
                 .cornerRadius(20)
                 .padding()
-                
-
             }
             .frame(width: 400, height: 760)
             .ignoresSafeArea()
@@ -74,5 +79,5 @@ struct LoginPage: View {
 }
 
 #Preview {
-    LoginPage(accountInfo: .constant(AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now, signedIn: false)))
+    LoginPage(accountInfo: .constant(AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)))
 }

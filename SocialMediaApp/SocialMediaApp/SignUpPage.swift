@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct SignUpPage: View {
-    @State var placehldr = ""
-    @State var placehldrPass = ""
-    @State var placehldrConfmPass = ""
-    @State var placehldr2 = ""
-    @State var placehldrDate: Date = Date.now
-    @State var placehldr3 = ""
-
+    @State private var newUser = ""
+    @State private var newPass = ""
+    @State private var newConfmPass = ""
+    @State private var newDate: Date = Date.now
+    @State private var newEmail = ""
+    @State private var userExists:Bool = false
+    @State private var pasCondMet:Bool = false
+    @State private var text = ""
+    @Binding var accInfo: [AccountList]
 
     var body: some View {
         NavigationView(content: {
@@ -29,32 +31,35 @@ struct SignUpPage: View {
                     Text("Create an Account!")
                     
 
-                    TextField("Username", text: $placehldr)
+                    TextField("Username", text: $newUser)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 200, height: 25)
+                        .border(Color.black)
+                        .border(Color.black, width: 2)
+                        .cornerRadius(5)
+                    
+                    Text("Must Include 1 uppercase and at least 8 Characters")
+                        .multilineTextAlignment(.center)
+                    
+                    SecureField("Password", text: $newPass)
                         .multilineTextAlignment(.center)
                         .frame(width: 200, height: 25)
                         .border(Color.black)
                         .border(Color.black, width: 2)
                         .cornerRadius(5)
 
-                    SecureField("Password", text: $placehldrPass)
+                    SecureField("Confirm Password", text: $newConfmPass)
                         .multilineTextAlignment(.center)
                         .frame(width: 200, height: 25)
                         .border(Color.black)
                         .border(Color.black, width: 2)
                         .cornerRadius(5)
 
-                    SecureField("Confirm Password", text: $placehldrConfmPass)
-                        .multilineTextAlignment(.center)
-                        .frame(width: 200, height: 25)
-                        .border(Color.black)
-                        .border(Color.black, width: 2)
-                        .cornerRadius(5)
-
-                    DatePicker("Date of Birth", selection: $placehldrDate, displayedComponents: .date)
+                    DatePicker("Date of Birth", selection: $newDate, displayedComponents: .date)
                         .padding()
                         .multilineTextAlignment(.center)
 
-                    TextField("Email", text: $placehldr3)
+                    TextField("Email", text: $newEmail)
                         .multilineTextAlignment(.center)
                         .frame(width: 200, height: 25)
                         .border(Color.black)
@@ -62,7 +67,11 @@ struct SignUpPage: View {
                         .cornerRadius(5)
                     
                     Button {
-                        
+                        for x in accInfo.indices{
+                            if (newUser == accInfo[x].accountUsername){
+                                userExists = true
+                            }
+                        }
                     } label: {
                         Text("Sign Up")
                             .padding()
@@ -71,6 +80,7 @@ struct SignUpPage: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
+                    Text("")
 
                 }
                 .frame(width: 350 , height: 600)
@@ -87,5 +97,5 @@ struct SignUpPage: View {
 }
 
 #Preview {
-    SignUpPage()
+    SignUpPage(accInfo: .constant([AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)]))
 }

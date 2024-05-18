@@ -21,7 +21,6 @@ struct AccountConstruct{
     var accountPassword: String
     var accountEmail: String
     var accountDOB: Date
-    var signedIn: Bool
 }
 
 
@@ -30,7 +29,7 @@ struct ContentView: View {
     @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrAccImage: "PFP", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123", StrLikes: 15, StrLiked: false, StrComments: 2)]
     
     
-    @State private var accountInfo: AccountConstruct = AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now, signedIn: false)
+    @State private var accountInfo: AccountConstruct = AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)
     var body: some View {
         TabView{
             NavigationView{
@@ -77,6 +76,7 @@ struct ContentView: View {
                                                 postList[index].StrLiked = false
                                             }
                                         }
+                                        .foregroundColor(.blue)
                                         Text("Comments \(postList[index].StrComments)")
 
                                     }
