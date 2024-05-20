@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PostConstruct{
     var StrAccName: String
-    var StrAccImage: String
     var StrHeading: String
     var StrContent: String
     var StrLikes: Int
@@ -26,7 +25,7 @@ struct AccountConstruct{
 
 
 struct ContentView: View {
-    @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrAccImage: "PFP", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123", StrLikes: 15, StrLiked: false, StrComments: 2)]
+    @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123", StrLikes: 15, StrLiked: false, StrComments: 2)]
     
     
     @State private var accountInfo: AccountConstruct = AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)
@@ -55,7 +54,7 @@ struct ContentView: View {
                             ForEach(postList.indices, id: \.self) {index in
                                 VStack{
                                     HStack{
-                                        Image("\(postList[index].StrAccImage)")
+                                        Image("PFP")
                                             .resizable()
                                             .frame(width: 50, height: 50)
                                             .padding()
@@ -117,7 +116,7 @@ struct ContentView: View {
                 Text("Main Page")
                 
             }
-            AccountPage()
+            AccountPage(accountInfo: $accountInfo)
                 .tabItem {
                     Text("Account")
 

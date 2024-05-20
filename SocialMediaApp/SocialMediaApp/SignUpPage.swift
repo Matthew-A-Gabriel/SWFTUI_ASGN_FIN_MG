@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct SignUpPage: View {
-    @State private var newUser = ""
-    @State private var newPass = ""
+    @State private var newAccount: AccountList = AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.init())
     @State private var newConfmPass = ""
-    @State private var newDate: Date = Date.now
-    @State private var newEmail = ""
     @State private var userExists:Bool = false
     @State private var pasCondMet:Bool = false
-    @State private var text = ""
+    @State private var popUpText = ""
     @Binding var accInfo: [AccountList]
 
     var body: some View {
@@ -31,7 +28,7 @@ struct SignUpPage: View {
                     Text("Create an Account!")
                     
 
-                    TextField("Username", text: $newUser)
+                    TextField("Username", text: $newAccount.accountUsername)
                         .multilineTextAlignment(.center)
                         .frame(width: 200, height: 25)
                         .border(Color.black)
@@ -41,7 +38,7 @@ struct SignUpPage: View {
                     Text("Must Include 1 uppercase and at least 8 Characters")
                         .multilineTextAlignment(.center)
                     
-                    SecureField("Password", text: $newPass)
+                    SecureField("Password", text: $newAccount.accountPassword)
                         .multilineTextAlignment(.center)
                         .frame(width: 200, height: 25)
                         .border(Color.black)
@@ -55,11 +52,11 @@ struct SignUpPage: View {
                         .border(Color.black, width: 2)
                         .cornerRadius(5)
 
-                    DatePicker("Date of Birth", selection: $newDate, displayedComponents: .date)
+                    DatePicker("Date of Birth", selection: $newAccount.accountDOB, displayedComponents: .date)
                         .padding()
                         .multilineTextAlignment(.center)
 
-                    TextField("Email", text: $newEmail)
+                    TextField("Email", text: $newAccount.accountEmail)
                         .multilineTextAlignment(.center)
                         .frame(width: 200, height: 25)
                         .border(Color.black)
@@ -68,10 +65,26 @@ struct SignUpPage: View {
                     
                     Button {
                         for x in accInfo.indices{
-                            if (newUser == accInfo[x].accountUsername){
+                            if (newAccount.accountUsername == accInfo[x].accountUsername){
                                 userExists = true
                             }
                         }
+                        for x in newAccount.accountPassword.indices{
+                            if (newAccount.accountPassword[x].isUppercase == true) {
+                                if (newAccount.accountPassword == newConfmPass) {
+                                    if (newAccount.accountPassword.count >= 8){
+                                        pasCondMet = true
+                                    }
+                                }
+                            }
+                        }
+                        if (userExists == false && pasCondMet == true) {
+                            accInfo.append(AccountList(accountUsername: newAccount.accountUsername, accountPassword: newAccount.accountPassword, accountEmail: newAccount.accountEmail, accountDOB: newAccount.accountDOB))
+                        } else {
+                            popUpText = "Account Username taken or Password not strong enough"
+                        }
+                        userExists = false
+                        pasCondMet = false
                     } label: {
                         Text("Sign Up")
                             .padding()
@@ -80,7 +93,7 @@ struct SignUpPage: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    Text("")
+                    Text("\(popUpText)")
 
                 }
                 .frame(width: 350 , height: 600)

@@ -9,7 +9,17 @@ import SwiftUI
 
 struct SettingsPage: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView(content: {
+            ZStack{
+                VStack {
+                    Text("Settings Page Here")
+                }
+                .padding()
+            }
+            .frame(width: 400, height: 760)
+            .ignoresSafeArea()
+            .background(.cyan)
+        })
     }
 }
 
