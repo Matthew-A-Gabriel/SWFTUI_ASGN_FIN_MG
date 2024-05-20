@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsPage: View {
+//    Change your details and stuff, also changes the stuff on the account list
     @Binding var accountInfo: AccountConstruct
     @Binding var accInfo: [AccountList]
     @State private var changeInfo: AccountConstruct = AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)

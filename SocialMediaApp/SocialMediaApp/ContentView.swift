@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Structs, super important for the orderliness of the website as a whole
 struct PostConstruct{
     var StrAccName: String
     var StrHeading: String
@@ -30,6 +31,7 @@ struct AccountList{
 }
 
 struct ContentView: View {
+//    These Variables are the things needed for website to run, having a list for posting Posts, the current Account you are logged into and all the accounts that exist
     @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123", StrLikes: 15, StrLiked: false, StrComments: 2)]
     @State private var accInfo: [AccountList] = [AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.init())]
     @State private var accountInfo: AccountConstruct = AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)
@@ -38,6 +40,7 @@ struct ContentView: View {
             NavigationView{
                 ZStack{
                     ScrollView{
+//                        Spacer to get it to look alright
                         Spacer()
                         Spacer()
                         Spacer()
@@ -45,6 +48,7 @@ struct ContentView: View {
                         Spacer()
 
                         VStack {
+//                            Welcom!
                             Text("Welcome to the Atmosphere")
                                 .padding()
                                 .font(.title)
@@ -53,7 +57,7 @@ struct ContentView: View {
                                 .frame(width: 375, height: 50)
                                 .cornerRadius(100)
                                 .multilineTextAlignment(.center)
-                            
+//                            For each, this one uses the Post List in order to make each and every post it's own individual thing, comes with Likes!
                             ForEach(postList.indices, id: \.self) {index in
                                 VStack{
                                     HStack{
@@ -88,6 +92,7 @@ struct ContentView: View {
                                 .background(.white)
                                 .cornerRadius(10)
                                 .padding()
+//                                Little messages that are only here to let u know ther eis nothing else
                             }
                             Text("The End Of the Line!")
                                 .padding()
@@ -114,6 +119,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
                 .background(.cyan)
             }
+//            Tab Items, these allow you to navigagte to other places. also lets the variables be used elsewhere
             .tabItem {
                 Text("Main Page")
                 

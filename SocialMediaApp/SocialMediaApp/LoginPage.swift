@@ -10,6 +10,8 @@ import SwiftUI
 
 
 struct LoginPage: View {
+//    Binding, recieves variables
+//    Intermediate and test Vari in order to compare with existing accounts
     @Binding var accInfo: [AccountList]
     @Binding var accountInfo: AccountConstruct
     @State private var intermediateName: String = ""

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignUpPage: View {
+//    Binding again, need it,new Variables and confirms and Bools are to make sure all the conditions are met and also so that a duplicate account it not created
     @State private var newAccount: AccountList = AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.init())
     @State private var newConfmPass = ""
     @State private var userExists:Bool = false

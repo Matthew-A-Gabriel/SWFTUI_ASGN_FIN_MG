@@ -10,6 +10,7 @@ import SwiftUI
 
 
 struct AccountPage: View {
+//    View your account, binding to recive stuff.
     @Binding var accountInfo: AccountConstruct
     @Binding var accInfo: [AccountList]
     var body: some View {

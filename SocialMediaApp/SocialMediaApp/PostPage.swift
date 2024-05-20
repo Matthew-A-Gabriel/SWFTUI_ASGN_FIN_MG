@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PostPage: View {
+//    post stuff in the main page in this one.
     @Binding var accountInfo: AccountConstruct
     @Binding var postList: [PostConstruct]
     @State var newPost: PostConstruct = PostConstruct(StrAccName: "", StrHeading: "", StrContent: "", StrLikes: 0, StrLiked: false, StrComments: 0)
