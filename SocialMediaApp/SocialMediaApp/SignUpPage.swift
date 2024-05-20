@@ -78,8 +78,9 @@ struct SignUpPage: View {
                                 }
                             }
                         }
-                        if (userExists == false && pasCondMet == true) {
+                        if (userExists == false && pasCondMet == true && newAccount.accountUsername != "") {
                             accInfo.append(AccountList(accountUsername: newAccount.accountUsername, accountPassword: newAccount.accountPassword, accountEmail: newAccount.accountEmail, accountDOB: newAccount.accountDOB))
+                            popUpText = "Success"
                         } else {
                             popUpText = "Account Username taken or Password not strong enough"
                         }

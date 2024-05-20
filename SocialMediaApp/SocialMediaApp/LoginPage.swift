@@ -7,17 +7,11 @@
 
 import SwiftUI
 
-struct AccountList{
-    var accountUsername: String
-    var accountPassword: String
-    var accountEmail: String
-    var accountDOB: Date
-}
+
 
 struct LoginPage: View {
-    
+    @Binding var accInfo: [AccountList]
     @Binding var accountInfo: AccountConstruct
-    @State private var accInfo: [AccountList] = [AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.init()), ]
     @State private var intermediateName: String = ""
     @State private var intermediatePass: String = ""
     @State private var testVari: String = ""
@@ -79,5 +73,5 @@ struct LoginPage: View {
 }
 
 #Preview {
-    LoginPage(accountInfo: .constant(AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)))
+    LoginPage(accInfo: .constant([AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)]),accountInfo: .constant(AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)))
 }

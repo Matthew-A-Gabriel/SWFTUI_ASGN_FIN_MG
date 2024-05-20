@@ -11,7 +11,7 @@ import SwiftUI
 
 struct AccountPage: View {
     @Binding var accountInfo: AccountConstruct
-    @State private var dateFormat: String = ""
+    @Binding var accInfo: [AccountList]
     var body: some View {
         NavigationView(content: {
             ZStack{
@@ -24,9 +24,19 @@ struct AccountPage: View {
                         Text("\(accountInfo.accountUsername)")
                             .font(.largeTitle)
                     }
+                    .padding()
                     Text("\(accountInfo.accountEmail)")
+                        .multilineTextAlignment(.center)
                     Text("\(accountInfo.accountDOB)")
-                        .font(.system(size: 10))
+                        .font(.system(size: 20))
+                        .multilineTextAlignment(.center)
+                    
+                    
+                    NavigationLink("Edit?" , destination: {
+                        SettingsPage(accountInfo: $accountInfo, accInfo: $accInfo)
+                    })
+                    .navigationBarBackButtonHidden(true)
+                    .foregroundColor(.blue)
                         
                 }
                 .frame(width: 350, height: 600)
@@ -43,5 +53,5 @@ struct AccountPage: View {
 }
 
 #Preview {
-    AccountPage(accountInfo: .constant(AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)))
+    AccountPage(accountInfo: .constant(AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)), accInfo: .constant([AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)]))
 }

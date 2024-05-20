@@ -22,12 +22,16 @@ struct AccountConstruct{
     var accountDOB: Date
 }
 
-
+struct AccountList{
+    var accountUsername: String
+    var accountPassword: String
+    var accountEmail: String
+    var accountDOB: Date
+}
 
 struct ContentView: View {
     @State private var postList: [PostConstruct] = [PostConstruct(StrAccName: "Insane_Clown", StrHeading: "This is a Test", StrContent: "Testing 123 Testing 123", StrLikes: 15, StrLiked: false, StrComments: 2)]
-    
-    
+    @State private var accInfo: [AccountList] = [AccountList(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.init())]
     @State private var accountInfo: AccountConstruct = AccountConstruct(accountUsername: "", accountPassword: "", accountEmail: "", accountDOB: Date.now)
     var body: some View {
         TabView{
@@ -48,7 +52,6 @@ struct ContentView: View {
                                 .background(.white)
                                 .frame(width: 375, height: 50)
                                 .cornerRadius(100)
-//                                .position(CGPoint(x: 175.0, y: 25.0))
                                 .multilineTextAlignment(.center)
                             
                             ForEach(postList.indices, id: \.self) {index in
@@ -106,7 +109,6 @@ struct ContentView: View {
                             
                         }
                         .padding()
-//                        .position(CGPoint(x: 200.0, y: 200.0))
                     }
                 }
                 .ignoresSafeArea()
@@ -116,17 +118,17 @@ struct ContentView: View {
                 Text("Main Page")
                 
             }
-            AccountPage(accountInfo: $accountInfo)
+            AccountPage(accountInfo: $accountInfo, accInfo: $accInfo)
                 .tabItem {
                     Text("Account")
 
                 }
-            PostPage()
+            PostPage(accountInfo: $accountInfo, postList: $postList)
                 .tabItem {
                     Text("Make a Post")
 
                 }
-            LoginPage(accountInfo: $accountInfo)
+            LoginPage(accInfo: $accInfo, accountInfo: $accountInfo)
                 .tabItem {
                     Text("Log In")
 
